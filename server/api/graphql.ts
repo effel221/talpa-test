@@ -8,7 +8,10 @@ const resolvers: Resolvers = {
         books: () => {
             return [
                 {
-                    title: 'GraphQL with Nuxt'
+                    title: 'Tanja loves Toms',
+                    author: {
+                        name: 'Tanja loves Toms 2'
+                    }
                 },
             ]
         },

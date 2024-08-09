@@ -1,12 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const defineNuxtConfig = ({
-  graphqlServer: {
-    url: '/api/graphql',
-  },
   apollo: {
+    autoImports: true,
+    authType: 'Bearer',
+    authHeader: 'Authorization',
+    proxyCookies: true,
     clients: {
       default: {
-        httpEndpoint: '/api/graphql'
+        httpEndpoint: 'http://localhost:3000/api/graphql',
       }
     },
   },
