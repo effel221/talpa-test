@@ -2,21 +2,16 @@ import type { Resolvers } from '#graphql/resolver'
 import { typeDefs } from '#graphql/schema'
 import { ApolloServer } from '@apollo/server'
 import { startServerAndCreateH3Handler } from "@as-integrations/h3"
+import prisma from "~/server/prisma";
 
 
 let books = []
 const resolvers: Resolvers = {
     Query: {
-        books: () => {
-            console.log(books)
-            return books.length ? books : [
-                {
-                    title: 'Tanja loves Toms title',
-                    author: {
-                        name: 'Tanja loves Toms 2'
-                    }
-                },
-            ]
+        cities: () => {
+            const result = prisma.flight.findMany()
+            console.log(result)
+            return result ? result : []
         },
     },
     Mutation: {

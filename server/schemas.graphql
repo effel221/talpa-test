@@ -1,18 +1,13 @@
+scalar Date
 type Query {
-    books: [Book]
-    currentNumber: Int
+    cities: [City]
 }
 
-type Book {
-    title: String
-    author: Author
-}
-
-type Author {
-    name: String
-    books: [Book]
+type City {
+    date: Date
+    city: String
 }
 
 type Mutation {
-    post(title: String!): [Book]!
+    post(title: String!): [City]!
 }
