@@ -12,3 +12,7 @@ type Author {
     name: String
     books: [Book]
 }
+
+type Mutation {
+    post(title: String!): [Book]!
+}
