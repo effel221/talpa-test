@@ -1,6 +1,8 @@
 scalar Date
 type Query {
-    products: [Product]
+    flights: [Product]
+    hotels: [Product]
+    car_rentals: [Product]
 }
 
 type Product {
@@ -8,6 +10,7 @@ type Product {
     date: Date
     city: String
     name: String
+    type: String
     description: String
 }
 
