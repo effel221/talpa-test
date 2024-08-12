@@ -2,7 +2,7 @@
 
 <template>
   <header>
-    <p class="mt-4">Hello world!</p>
+    <div>Hello world!</div>
   </header>
 </template>
 

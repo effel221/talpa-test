@@ -4,24 +4,31 @@ const prisma = new PrismaClient()
 
 async function main() {
     await prisma.$executeRaw`
-        INSERT INTO flights (date, city)
+        INSERT INTO flights (date, name, city, type, description)
         SELECT timestamp '2024-01-10 20:00:00' +
                random() * (timestamp '2024-01-20 20:00:00' -
                            timestamp '2024-01-10 10:00:00') AS date,
-               ('{Minsk,Mallorca,Bar}'::text[])[ceil(random()*3)]  AS city
+               ('{FlyDubai,Eurowings,Lot}'::text[])[ceil(random()*3)]  AS name,            
+               ('{Minsk,Mallorca,Bar}'::text[])[ceil(random()*3)]  AS city,
+               'flight' AS type,
+               'flight description' as description
         FROM generate_series(1, 15);
     `;
     await prisma.$executeRaw`
-        INSERT INTO hotels (city, name)
+        INSERT INTO hotels (city, name, type, description)
         SELECT ('{Minsk,Mallorca,Bar}'::text[])[ceil(random()*3)]  AS city,
-               ('{Hilton,Mercury,Radisson, Holiday Inn}'::text[])[ceil(random()*3)]  AS name
+               ('{Hilton,Mercury,Radisson, Holiday Inn}'::text[])[ceil(random()*3)]  AS name,
+              'hotel' AS type,
+              'hotel description' as description
         FROM generate_series(1, 15);
     `;
 
     await prisma.$executeRaw`
-        INSERT INTO car_rentals (city, company_name)
+        INSERT INTO car_rentals (city, name, type, description)
         SELECT ('{Minsk,Mallorca,Bar}'::text[])[ceil(random()*3)]  AS city,
-               ('{Kayak,Blabla,Sixt, Europcar}'::text[])[ceil(random()*3)]  AS company_name
+               ('{Kayak,Blabla,Sixt, Europcar}'::text[])[ceil(random()*3)]  AS name,
+        'car_rentals' AS type,
+        'car rentals description' as description
         FROM generate_series(1, 15);
     `;
 }

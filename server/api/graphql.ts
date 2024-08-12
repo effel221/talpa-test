@@ -8,7 +8,7 @@ import prisma from "~/server/prisma";
 let books = []
 const resolvers: Resolvers = {
     Query: {
-        cities: () => {
+        products: () => {
             const result = prisma.flights.findMany()
             return result
         },

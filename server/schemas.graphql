@@ -1,13 +1,16 @@
 scalar Date
 type Query {
-    cities: [City]
+    products: [Product]
 }
 
-type City {
+type Product {
+    id: ID!
     date: Date
     city: String
+    name: String
+    description: String
 }
 
 type Mutation {
-    post(title: String!): [City]!
+    post(title: String!): [Product]!
 }
