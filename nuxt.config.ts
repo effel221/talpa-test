@@ -15,6 +15,15 @@ const defineNuxtConfig = ({
     "@nuxtjs/apollo",
     "@pinia/nuxt",
     '@nuxtjs/tailwindcss'],
+    build: {
+      postcss: {
+        plugins: {
+          "postcss-import": {},
+          "postcss-url": {},
+          "autoprefixer": {}
+        }
+      }
+    }
 });
 
 export default defineNuxtConfig
