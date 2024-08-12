@@ -9,12 +9,11 @@ let books = []
 const resolvers: Resolvers = {
     Query: {
         cities: () => {
-            const result = prisma.flight.findMany()
-            console.log(result)
-            return result ? result : []
+            const result = prisma.flights.findMany()
+            return result
         },
     },
-    Mutation: {
+/*    Mutation: {
         // 2
         post: (parent, args) => {
 
@@ -24,7 +23,7 @@ const resolvers: Resolvers = {
             books.unshift(book)
             return books
         }
-    }
+    }*/
 }
 
 const apollo = new ApolloServer({ typeDefs, resolvers })

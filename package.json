@@ -17,14 +17,19 @@
   "dependencies": {
     "@apollo/server": "^4.11.0",
     "@as-integrations/h3": "^1.2.1",
+    "@pinia/nuxt": "^0.5.3",
     "graphql": "^16.9.0",
+    "moment": "^2.30.1",
     "nuxt": "^3.12.4",
     "nuxt-graphql-server": "^3.1.4",
+    "pinia": "^2.2.1",
+    "tailwindcss": "^3.4.9",
     "tsx": "^4.17.0",
     "vue": "latest"
   },
   "devDependencies": {
     "@nuxtjs/apollo": "^5.0.0-alpha.14",
+    "@nuxtjs/tailwindcss": "^6.12.1",
     "@prisma/client": "^5.18.0",
     "@types/node": "^22.2.0",
     "prisma": "^5.18.0",

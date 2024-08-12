@@ -13,19 +13,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model flight {
+model flights {
   id     Int     @id @default(autoincrement())
   date   DateTime
   city   String
 }
 
-model hotel {
+model hotels {
   id     Int     @id @default(autoincrement())
   city   String
   name   String
 }
 
-model carRental {
+model car_rentals {
   id             Int     @id @default(autoincrement())
   city           String
   company_name   String
