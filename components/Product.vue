@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import moment from "moment";
 import type {Product} from "../types_interfaces/interfaces"
+import {ProductTypes} from "../lib/utils"
 interface Props  {
   item: Product
 }
 const props = defineProps<Props>()
 
-const isFlight = ref(props.item.type === "flight")
-const isHotel = ref(props.item.type === "hotel")
-const isCar = ref(props.item.type === "car_rentals")
+const isFlight = ref(props.item.type === ProductTypes.first)
+const isHotel = ref(props.item.type === ProductTypes.second)
+const isCar = ref(props.item.type === ProductTypes.third)
 </script>
 
 <template>

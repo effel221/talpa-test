@@ -10,6 +10,7 @@
 
   </header>
   <main>
+    <ProductFilter/>
     <div class="flex flex-wrap justify-center">
         <Product v-for="item in result?.products" :key="item.id" :item="item" />
     </div>
@@ -18,8 +19,9 @@
 
 
 <script lang="ts" setup>
-import {getProducts} from "./queries/queries";
-import type {ProductsInteface} from "./types_interfaces/interfaces";
+import {getProducts} from "./queries/queries"
+import type {ProductsInteface} from "./types_interfaces/interfaces"
+
 
 
 
