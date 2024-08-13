@@ -6,7 +6,6 @@ interface Props  {
   item: Product
 }
 const props = defineProps<Props>()
-
 const isFlight = ref(props.item.type === ProductTypes.first)
 const isHotel = ref(props.item.type === ProductTypes.second)
 const isCar = ref(props.item.type === ProductTypes.third)

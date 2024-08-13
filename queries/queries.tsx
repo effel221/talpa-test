@@ -1,5 +1,6 @@
 const fragmentProduct = gql`
     fragment Product on Product {
+        id
         date
         city
         name
@@ -9,8 +10,8 @@ const fragmentProduct = gql`
 `
 
 export const getProducts = gql`
-    query getProducts {
-        products {
+    query getProducts($filter: [String]) {
+        products(filter: $filter) {
             ...Product
         }
     }

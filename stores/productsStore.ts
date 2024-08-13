@@ -8,8 +8,11 @@ export const useProductsStore = defineStore('products', () => {
     function setVisibleProductsTypes(val:string[]) {
         visibleProductsTypes.value=val
     }
+    const variables = {
+        filter: visibleProductsTypes.valuevis
+    }
 
-    const { result, refetch } = useQuery<ProductsInteface>(getProducts)
+    const { result, refetch } = useQuery<ProductsInteface>(getProducts, variables)
 
     return {visibleProductsTypes, currentPage, result, refetch, setVisibleProductsTypes}
 })

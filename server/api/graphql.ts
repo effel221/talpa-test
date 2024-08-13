@@ -8,12 +8,11 @@ import prisma from "~/server/prisma";
 
 const resolvers = {
     Query: {
-        products: (filter: string[], page: number) => {
-            console.log(filter)
+        products: (parent, args) => {
             const result = prisma.products.findMany({
                     where: {
                         type: {
-                            in: filter
+                            in: args.filter
                         }
                     },
                     orderBy: [
