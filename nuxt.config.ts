@@ -14,7 +14,7 @@ const defineNuxtConfig = ({
     "nuxt-graphql-server",
     "@nuxtjs/apollo",
     "@pinia/nuxt",
-    '@nuxtjs/tailwindcss'],
+    "@nuxtjs/tailwindcss"],
   build: {
     postcss: {
       plugins: {
@@ -23,7 +23,13 @@ const defineNuxtConfig = ({
         "autoprefixer": {}
       }
     }
-  }
+  },
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ]
 });
 
 export default defineNuxtConfig

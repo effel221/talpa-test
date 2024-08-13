@@ -1,13 +1,10 @@
 export interface Product {
     id: number;
+    date?: Date;
     city: string;
     name: string;
     type: string;
     description: string;
-}
-
-export interface FlightProduct extends Product {
-    date: Date;
 }
 
 export interface CarRentalsInteface {

@@ -18,6 +18,7 @@
     "@apollo/server": "^4.11.0",
     "@as-integrations/h3": "^1.2.1",
     "@pinia/nuxt": "^0.5.3",
+    "flowbite": "^2.5.1",
     "graphql": "^16.9.0",
     "moment": "^2.30.1",
     "nuxt": "^3.12.4",

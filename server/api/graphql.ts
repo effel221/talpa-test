@@ -18,6 +18,7 @@ const resolvers = {
         },
         car_rentals: async () => {
             const result = await prisma.car_rentals.findMany()
+            return result
         },
     },
 /*    Mutation: {

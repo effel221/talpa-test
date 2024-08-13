@@ -10,7 +10,7 @@
   <main>
     <ul id="example-1">
       <li v-for="item in result?.car_rentals" :key="item.id">
-        {{ item.name }}
+        <Product :item="item" />
       </li>
     </ul>
   </main>
@@ -20,6 +20,8 @@
 <script lang="ts" setup>
 import {getCarRentalsProducts} from "./queries/queries";
 import type {CarRentalsInteface} from "./types_interfaces/interfaces";
+
+
 
 const { result } = useQuery<CarRentalsInteface>(getCarRentalsProducts)
 
