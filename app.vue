@@ -6,13 +6,17 @@
       <div class="grid-cols-1 text-green-500 text-2xl m-4">Logo</div>
       <div class="grid-cols-5">Hello world!</div>
     </div>
+
   </header>
   <main>
-    <ul id="example-1">
-      <li v-for="item in result?.car_rentals" :key="item.id">
+    <Splide
+        :options="{ perPage: 5, perMove: 1, type: 'loop', gap: '1em', height: '15rem' }"
+        aria-labelledby="My Favorite Images"
+    >
+      <SplideSlide v-for="item in result?.car_rentals" :key="item.id">
         <Product :item="item" />
-      </li>
-    </ul>
+      </SplideSlide>
+    </Splide>
   </main>
 </template>
 

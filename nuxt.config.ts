@@ -14,7 +14,8 @@ const defineNuxtConfig = ({
     "nuxt-graphql-server",
     "@nuxtjs/apollo",
     "@pinia/nuxt",
-    "@nuxtjs/tailwindcss"],
+    "@nuxtjs/tailwindcss",
+     "nuxt-splide"],
   build: {
     postcss: {
       plugins: {
