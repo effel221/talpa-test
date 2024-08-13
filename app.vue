@@ -19,12 +19,7 @@
 
 
 <script lang="ts" setup>
-import {getProducts} from "./queries/queries"
-import type {ProductsInteface} from "./types_interfaces/interfaces"
-
-
-
-
-const { result } = useQuery<ProductsInteface>(getProducts)
-
+import {useProductsStore} from "./stores/productsStore"
+const store = useProductsStore()
+const { result } = storeToRefs(store)
 </script>

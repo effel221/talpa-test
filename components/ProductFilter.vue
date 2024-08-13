@@ -1,10 +1,23 @@
 <script setup lang="ts">
-import {ProductTypes} from "../lib/utils";
+import {ProductTypes} from "../lib/utils"
+import {useProductsStore} from "../stores/productsStore"
+const store = useProductsStore()
+const { visibleProductsTypes, refetch } = storeToRefs(store)
 
 const checkedProducts = ref([])
 const valueFlights = ref(ProductTypes.first)
 const valueHotels = ref(ProductTypes.second)
 const valueCars = ref(ProductTypes.third)
+
+watch(checkedProducts, ()=> {
+
+  store.setVisibleProductsTypes([...checkedProducts.value])
+  const variables = {
+    filter: [...visibleProductsTypes.value]
+  }
+  console.log(variables)
+  store.refetch(variables)
+})
 </script>
 
 <template>

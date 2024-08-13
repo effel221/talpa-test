@@ -8,5 +8,5 @@ export interface Product {
 }
 
 export interface ProductsInteface {
-    car_rentals: Product[]
+    products: Product[]
 }
