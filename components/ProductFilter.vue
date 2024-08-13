@@ -10,7 +10,6 @@ const valueHotels = ref(ProductTypes.second)
 const valueCars = ref(ProductTypes.third)
 
 watch(checkedProducts, ()=> {
-
   store.setVisibleProductsTypes([...checkedProducts.value])
   const variables = {
     filter: [...visibleProductsTypes.value]

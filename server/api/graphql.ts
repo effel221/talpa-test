@@ -2,13 +2,14 @@ import { typeDefs } from '#graphql/schema'
 import { ApolloServer } from '@apollo/server'
 import { startServerAndCreateH3Handler } from "@as-integrations/h3"
 import prisma from "~/server/prisma";
+import type {ProductsQueryInterface} from "~/types_interfaces/interfaces";
 
 
 
 
 const resolvers = {
     Query: {
-        products: (parent, args) => {
+        products: (parent: undefined, args:ProductsQueryInterface) => {
             const result = prisma.products.findMany({
                     where: {
                         type: {

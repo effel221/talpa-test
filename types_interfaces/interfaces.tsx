@@ -10,3 +10,7 @@ export interface Product {
 export interface ProductsInteface {
     products: Product[]
 }
+
+export interface ProductsQueryInterface {
+    filter: string[]
+}
