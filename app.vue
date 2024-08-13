@@ -1,33 +1,29 @@
 
 
 <template>
-  <header>
+  <header class="mb-10">
     <div class="flex">
-      <div class="grid-cols-1 text-green-500 text-2xl m-4">Logo</div>
-      <div class="grid-cols-5">Hello world!</div>
+      <div class="grid-cols-1 text-green-500 text-2xl m-4 font-bold">Travel Paradise Site</div>
     </div>
 
   </header>
   <main>
-    <Splide
-        :options="{ perPage: 5, perMove: 1, type: 'loop', gap: '1em', height: '15rem' }"
-        aria-labelledby="My Favorite Images"
-    >
-      <SplideSlide v-for="item in result?.car_rentals" :key="item.id">
-        <Product :item="item" />
-      </SplideSlide>
-    </Splide>
+    <div class="flex flex-wrap justify-center">
+        <Product v-for="item in products?.products" :key="item.id" :item="item" />
+    </div>
   </main>
 </template>
 
 
 <script lang="ts" setup>
-import {getCarRentalsProducts} from "./queries/queries";
-import type {CarRentalsInteface} from "./types_interfaces/interfaces";
+import {getProducts} from "./queries/queries";
+import type {ProductsInteface} from "./types_interfaces/interfaces";
 
 
 
-const { result } = useQuery<CarRentalsInteface>(getCarRentalsProducts)
-
+const { result: products } = useQuery<ProductsInteface>(getProducts)
+if ( products) {
+  console.log(products)
+}
 
 </script>

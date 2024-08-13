@@ -8,18 +8,16 @@ import prisma from "~/server/prisma";
 
 const resolvers = {
     Query: {
-        flights: () => {
-            const result = prisma.flights.findMany()
+        products: () => {
+            const result = prisma.products.findMany({
+                orderBy: [
+                    {
+                        date: 'desc',
+                    }
+                ],
+            })
             return result
-        },
-        hotels: () => {
-            const result = prisma.hotels.findMany()
-            return result
-        },
-        car_rentals: async () => {
-            const result = await prisma.car_rentals.findMany()
-            return result
-        },
+        }
     },
 /*    Mutation: {
         // 2

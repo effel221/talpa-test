@@ -1,8 +1,6 @@
 scalar Date
 type Query {
-    flights: [Product]
-    hotels: [Product]
-    car_rentals: [Product]
+    products: [Product]
 }
 
 type Product {

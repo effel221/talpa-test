@@ -7,6 +7,6 @@ export interface Product {
     description: string;
 }
 
-export interface CarRentalsInteface {
+export interface ProductsInteface {
     car_rentals: Product[]
 }

@@ -1,5 +1,6 @@
 const fragmentProduct = gql`
     fragment Product on Product {
+        date
         city
         name
         type
@@ -7,28 +8,9 @@ const fragmentProduct = gql`
     }
 `
 
-export const getFlightsProducts = gql`
-    query getFlightsProducts {
-        flights {
-            date
-            ...Product
-        }
-    }
-    ${fragmentProduct}
-`
-
-export const getHotelsProducts = gql`
-    query getHotelsProducts {
-        hotels {
-            ...Product
-        }
-    }
-    ${fragmentProduct}
-`
-
-export const getCarRentalsProducts = gql`
-    query getCarRentalsProducts {
-        car_rentals {
+export const getProducts = gql`
+    query getProducts {
+        products {
             ...Product
         }
     }

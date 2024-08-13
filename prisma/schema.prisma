@@ -13,40 +13,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model flights {
+
+model products {
   id          Int      @id @default(autoincrement())
   date        DateTime
   city        String
   name        String
   type        String
   description String
-  bundle      bundle[]
 }
 
-model hotels {
-  id          Int      @id @default(autoincrement())
-  city        String
-  name        String
-  type        String
-  description String
-  bundle      bundle[]
-}
 
-model car_rentals {
-  id          Int      @id @default(autoincrement())
-  city        String
-  name        String
-  type        String
-  description String
-  bundle      bundle[]
-}
 
-model bundle {
-  id           Int         @id @default(autoincrement())
-  flights      flights     @relation(fields: [flightsId], references: [id])
-  flightsId    Int
-  hotels       hotels      @relation(fields: [hotelsId], references: [id])
-  hotelsId     Int
-  car_rentals  car_rentals @relation(fields: [carRentalsId], references: [id])
-  carRentalsId Int
-}
