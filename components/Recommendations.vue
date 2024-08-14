@@ -17,7 +17,14 @@ const onBundleDeleteProduct = async (id: number) => {
 </script>
 
 <template>
-  <h2 class="m-4 text-3xl font-bold">Our recommendations</h2>
+  <h2 class="m-4 text-3xl font-bold">Our recommendations
+    <button v-show="isAdmin"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none
+      focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-2.5 py-1.5
+      text-center me-2 mb-2 dark:bg-blue-600
+      dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >+</button>
+  </h2>
   <Splide
       :options="{ perPage: 5, perMove: 1, gap: '2px', padding: '10px', pagination: true }"
       aria-labelledby="Our products bundle recommendations"

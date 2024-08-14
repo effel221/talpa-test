@@ -2,7 +2,7 @@ import { typeDefs } from '#graphql/schema'
 import { ApolloServer } from '@apollo/server'
 import { startServerAndCreateH3Handler } from "@as-integrations/h3"
 import prisma from "~/server/prisma";
-import type {ProductsQueryInterface} from "~/types_interfaces/interfaces";
+import type {ProductsQueryInterface, IdParamMutationInteface} from "~/types_interfaces/interfaces";
 
 
 
@@ -40,17 +40,16 @@ const resolvers = {
         }
     },
     Mutation: {
-        delete_product: async (parent, args) => {
+        delete_product: async (parent: undefined, args: IdParamMutationInteface) => {
             const id = args.id
             const deleteProduct = await prisma.products.delete({
                 where: {
                     id: Number(args.id),
                 },
             })
-            console.log(deleteProduct)
             return deleteProduct
         },
-        delete_bundle_product: async (parent, args) => {
+        delete_bundle_product: async (parent: undefined, args : IdParamMutationInteface) => {
             const id = args.id
             const deleteBundleProduct = await prisma.product_bundle.delete({
                 where: {

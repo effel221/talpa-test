@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import moment from "moment";
-import type {Product} from "../types_interfaces/interfaces"
+import type {ProductProps} from "../types_interfaces/interfaces"
 import {ProductTypes} from "../lib/utils"
 import {useProductsStore} from "../stores/productsStore";
-import {useUserInfoStore} from "../stores/userStore";
-interface Props  {
-  item: Product
-}
+import {useUserInfoStore} from "../stores/userStore"
+
 const store = useProductsStore()
-const props = defineProps<Props>()
+const props = defineProps<ProductProps>()
 const userInfoStore = useUserInfoStore()
 const { isAdmin } = storeToRefs(userInfoStore)
 const isFlight = ref<boolean>(props?.item?.type === ProductTypes.first || false)
@@ -47,6 +45,11 @@ const onDeleteProduct = async () => {
     <p v-show="isFlight"><strong>Flight date:</strong> {{moment(item.date).format("MMM Do YY")}}</p>
     <p class="text-cyan-950"><strong>City:</strong> {{item.city}}</p>
     <p class="text-cyan-950">{{item.description}}</p>
+    <button class="m-1 p-1 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none
+      focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm
+      text-center dark:bg-blue-600
+      dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >Add to Card</button>
     <button v-show="isAdmin" class="absolute flex text-2xl font-bold	px-0 right-2 top-0 rounded-lg p-1"
       :class="{
         'text-fuchsia-800': isFlight,
