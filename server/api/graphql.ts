@@ -47,8 +47,18 @@ const resolvers = {
                     id: Number(args.id),
                 },
             })
+            console.log(deleteProduct)
             return deleteProduct
-        }
+        },
+        delete_bundle_product: async (parent, args) => {
+            const id = args.id
+            const deleteBundleProduct = await prisma.product_bundle.delete({
+                where: {
+                    id: Number(args.id),
+                },
+            })
+            return deleteBundleProduct
+        },
     }
 }
 

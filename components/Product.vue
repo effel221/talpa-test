@@ -8,16 +8,16 @@ interface Props  {
 }
 const store = useProductsStore()
 const props = defineProps<Props>()
-const isFlight = ref(props.item.type === ProductTypes.first)
-const isHotel = ref(props.item.type === ProductTypes.second)
-const isCar = ref(props.item.type === ProductTypes.third)
+const isFlight = ref<boolean>(props?.item?.type === ProductTypes.first || false)
+const isHotel = ref(props?.item?.type === ProductTypes.second)
+const isCar = ref(props?.item?.type === ProductTypes.third)
 
-const onDeleteProduct = () => {
+const onDeleteProduct = async () => {
    const variables = {
      id: props.item.id
    }
-   store.mutate(variables)
-   store.refetch()
+   await store.mutate(variables)
+   await store.refetch()
 }
 
 </script>
@@ -43,6 +43,7 @@ const onDeleteProduct = () => {
         'text-sky-700': isHotel}">{{item.name}}</h5>
     <p v-show="isFlight"><strong>Flight date:</strong> {{moment(item.date).format("MMM Do YY")}}</p>
     <p class="text-cyan-950"><strong>City:</strong> {{item.city}}</p>
+    <p class="text-cyan-950">{{item.description}}</p>
     <button class="absolute flex text-2xl font-bold	px-0 right-2 top-0 rounded-lg p-1"
       :class="{
         'text-fuchsia-800': isFlight,

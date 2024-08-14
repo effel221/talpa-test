@@ -8,3 +8,16 @@ export const deleteProduct = gql`
     }
     ${fragmentProduct}
 `
+
+export const deleteBundleProduct = gql`
+    mutation deleteBundleProduct($id: ID!) {
+        delete_bundle_product(id: $id) {
+            id
+            productids
+            products {
+                ...Product
+            }
+        }
+    }
+    ${fragmentProduct}
+`

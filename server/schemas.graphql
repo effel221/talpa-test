@@ -20,5 +20,6 @@ type BundleProduct {
 }
 
 type Mutation {
-    delete_product(id: ID!): [Product]!
+    delete_product(id: ID!): Product!,
+    delete_bundle_product(id: ID!): BundleProduct!,
 }
