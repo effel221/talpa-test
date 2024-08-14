@@ -20,5 +20,5 @@ type BundleProduct {
 }
 
 type Mutation {
-    post(title: String!): [Product]!
+    delete_product(id: ID!): [Product]!
 }

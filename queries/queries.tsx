@@ -1,4 +1,4 @@
-const fragmentProduct = gql`
+export const fragmentProduct = gql`
     fragment Product on Product {
         id
         date

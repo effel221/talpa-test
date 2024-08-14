@@ -2,13 +2,24 @@
 import moment from "moment";
 import type {Product} from "../types_interfaces/interfaces"
 import {ProductTypes} from "../lib/utils"
+import {useProductsStore} from "../stores/productsStore";
 interface Props  {
   item: Product
 }
+const store = useProductsStore()
 const props = defineProps<Props>()
 const isFlight = ref(props.item.type === ProductTypes.first)
 const isHotel = ref(props.item.type === ProductTypes.second)
 const isCar = ref(props.item.type === ProductTypes.third)
+
+const onDeleteProduct = () => {
+   const variables = {
+     id: props.item.id
+   }
+   store.mutate(variables)
+   store.refetch()
+}
+
 </script>
 
 <template>
@@ -32,14 +43,13 @@ const isCar = ref(props.item.type === ProductTypes.third)
         'text-sky-700': isHotel}">{{item.name}}</h5>
     <p v-show="isFlight"><strong>Flight date:</strong> {{moment(item.date).format("MMM Do YY")}}</p>
     <p class="text-cyan-950"><strong>City:</strong> {{item.city}}</p>
-    <button class="absolute text-2xl font-bold	px-0 right-2 top-0 rounded-lg"
+    <button class="absolute flex text-2xl font-bold	px-0 right-2 top-0 rounded-lg p-1"
       :class="{
         'text-fuchsia-800': isFlight,
         'text-orange-500': isCar,
         'text-sky-700': isHotel}"
-    >
-      x
-    </button>
+      @click="onDeleteProduct"
+    >x</button>
   </div>
 </template>
 

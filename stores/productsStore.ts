@@ -1,6 +1,7 @@
 import type {ProductsInterface} from "../types_interfaces/interfaces";
 import {getProducts} from "../queries/queries";
 import {ProductTypes} from "../lib/utils";
+import {deleteProduct} from "../queries/mutations";
 
 export const useProductsStore = defineStore('products', () => {
     const visibleProductsTypes = ref([ProductTypes.first, ProductTypes.second, ProductTypes.third])
@@ -13,6 +14,7 @@ export const useProductsStore = defineStore('products', () => {
     }
 
     const { result, refetch } = useQuery<ProductsInterface>(getProducts, variables)
+    const {mutate} = useMutation<ProductsInterface>(deleteProduct)
 
-    return {visibleProductsTypes, currentPage, result, refetch, setVisibleProductsTypes}
+    return {visibleProductsTypes, currentPage, result, refetch, setVisibleProductsTypes, mutate}
 })

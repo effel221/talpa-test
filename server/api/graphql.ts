@@ -9,8 +9,8 @@ import type {ProductsQueryInterface} from "~/types_interfaces/interfaces";
 
 const resolvers = {
     Query: {
-        products: (parent: undefined, args:ProductsQueryInterface) => {
-            const result = prisma.products.findMany({
+        products: async (parent: undefined, args:ProductsQueryInterface) => {
+            const result = await prisma.products.findMany({
                     where: {
                         type: {
                             in: args.filter
@@ -39,17 +39,17 @@ const resolvers = {
             return result
         }
     },
-/*    Mutation: {
-        // 2
-        post: (parent, args) => {
-
-            const book = {
-                title: args.title
-            }
-            books.unshift(book)
-            return books
+    Mutation: {
+        delete_product: async (parent, args) => {
+            const id = args.id
+            const deleteProduct = await prisma.products.delete({
+                where: {
+                    id: Number(args.id),
+                },
+            })
+            return deleteProduct
         }
-    }*/
+    }
 }
 
 const apollo = new ApolloServer({ typeDefs, resolvers })
