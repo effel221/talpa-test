@@ -38,10 +38,6 @@ async function main() {
         FROM generate_series(1, 15);
     `;
 
-    await prisma.$executeRaw`
-        INSERT INTO product_bundle (productids)
-        VALUES ('{1, 37, 51}'::int[])
-    `;
 }
 
 main()

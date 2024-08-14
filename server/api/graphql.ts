@@ -4,9 +4,6 @@ import { startServerAndCreateH3Handler } from "@as-integrations/h3"
 import prisma from "~/server/prisma";
 import type {ProductsQueryInterface, IdParamMutationInteface} from "~/types_interfaces/interfaces";
 
-
-
-
 const resolvers = {
     Query: {
         products: async (parent: undefined, args:ProductsQueryInterface) => {
@@ -25,18 +22,17 @@ const resolvers = {
             return result
         },
         bundle_products: async () => {
-            const bundles = await prisma.product_bundle.findMany({})
-                const result = bundles.map(item=> {
-                    const products = prisma.products.findMany({
-                        where: {
-                            id: {
-                                in: item.productids
-                            }
+            const bundles = await prisma.bundle.findMany({
+                include: {
+                    bundle_products: {
+                        include: {
+                            product: true
                         }
-                    })
-                    return {...item, products}
-                })
-            return result
+                    }
+                }
+            })
+            console.log(JSON.stringify(bundles, null, 2))
+            return bundles
         }
     },
     Mutation: {

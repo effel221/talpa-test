@@ -13,25 +13,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model products {
-  id          Int      @id @default(autoincrement())
-  date        DateTime
-  city        String
-  name        String
-  type        String
-  description String
+  id             Int              @id @default(autoincrement())
+  date           DateTime
+  city           String
+  name           String
+  type           String
+  description    String
+  bundle         bundle_products[]
 }
 
-model product_bundle {
-  id          Int      @id @default(autoincrement())
-  productids  Int[]
+model bundle {
+  id         Int       @id @default(autoincrement())
+  bundle_products     bundle_products[]
+}
+
+model bundle_products {
+  bundle    bundle @relation(fields: [bundleId], references: [id])
+  bundleId  Int
+  product   products @relation(fields: [productId], references: [id])
+  productId Int
+
+  @@id([bundleId, productId])
 }
 
 model card {
-  id                Int      @id @default(autoincrement())
-  user              String
-  productIds        Int[]
-  bundleProductIds  Int[]
+  id               Int    @id @default(autoincrement())
+  user             String
+  productIds       Int[]
+  bundleProductIds Int[]
 }
-
