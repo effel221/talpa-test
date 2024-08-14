@@ -3,11 +3,11 @@
 <template>
   <header class="mb-10 bg-orange-100">
     <div class="flex">
-      <div class="grid-cols-1 text-green-500 text-2xl m-4 font-bold">
+      <div class="text-green-500 text-2xl m-4 font-bold">
         <a href="/">Travel Paradise Site</a>
       </div>
-      <div>
-        
+      <div class="ml-auto mt-4 mb-4 mr-4">
+      <UserInfo/>
       </div>
     </div>
 
