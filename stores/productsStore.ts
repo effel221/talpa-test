@@ -1,4 +1,4 @@
-import type {ProductsInteface} from "../types_interfaces/interfaces";
+import type {ProductsInterface} from "../types_interfaces/interfaces";
 import {getProducts} from "../queries/queries";
 import {ProductTypes} from "../lib/utils";
 
@@ -12,7 +12,7 @@ export const useProductsStore = defineStore('products', () => {
         filter: visibleProductsTypes.value
     }
 
-    const { result, refetch } = useQuery<ProductsInteface>(getProducts, variables)
+    const { result, refetch } = useQuery<ProductsInterface>(getProducts, variables)
 
     return {visibleProductsTypes, currentPage, result, refetch, setVisibleProductsTypes}
 })

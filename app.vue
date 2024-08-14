@@ -1,16 +1,21 @@
 
 
 <template>
-  <header class="mb-10">
+  <header class="mb-10 bg-orange-100">
     <div class="flex">
       <div class="grid-cols-1 text-green-500 text-2xl m-4 font-bold">
         <a href="/">Travel Paradise Site</a>
       </div>
+      <div>
+        
+      </div>
     </div>
 
   </header>
-  <main>
-    <ProductFilter/>
+  <main class="flex flex-col">
+    <Recommendations/>
+    <h2 class="m-4 text-3xl font-bold">Availible products</h2>
+    <div class="flex m-5"><ProductFilter/></div>
     <div class="flex flex-wrap justify-center">
         <Product v-for="item in result?.products" :key="item.id" :item="item" />
     </div>

@@ -1,6 +1,7 @@
 scalar Date
 type Query {
-    products(filter: [String]): [Product]
+    products(filter: [String]): [Product],
+    bundle_products: [BundleProduct]
 }
 
 type Product {
@@ -10,6 +11,12 @@ type Product {
     name: String
     type: String
     description: String
+}
+
+type BundleProduct {
+    id: ID!
+    productids: [Int]
+    products: [Product]
 }
 
 type Mutation {

@@ -17,3 +17,16 @@ export const getProducts = gql`
     }
     ${fragmentProduct}
 `
+
+export const getBundleProducts = gql`
+    query getBundleProducts {
+        bundle_products {
+            id
+            productids
+            products {
+              ...Product
+            }
+       }
+    }
+    ${fragmentProduct}
+`

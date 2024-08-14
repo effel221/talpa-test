@@ -14,7 +14,7 @@ const isCar = ref(props.item.type === ProductTypes.third)
 <template>
   <div class="relative w-72 m-1 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
     <span
-      class="absolute	px-1 right-1 top-1 text-white rounded-lg text-sm"
+      class="absolute	px-1 left-1 top-1 text-white rounded-lg text-sm"
       :class="{
         'bg-fuchsia-800': isFlight,
         'bg-orange-500': isCar,
@@ -32,6 +32,14 @@ const isCar = ref(props.item.type === ProductTypes.third)
         'text-sky-700': isHotel}">{{item.name}}</h5>
     <p v-show="isFlight"><strong>Flight date:</strong> {{moment(item.date).format("MMM Do YY")}}</p>
     <p class="text-cyan-950"><strong>City:</strong> {{item.city}}</p>
+    <button class="absolute text-2xl font-bold	px-0 right-2 top-0 rounded-lg"
+      :class="{
+        'text-fuchsia-800': isFlight,
+        'text-orange-500': isCar,
+        'text-sky-700': isHotel}"
+    >
+      x
+    </button>
   </div>
 </template>
 

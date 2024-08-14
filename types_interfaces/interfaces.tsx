@@ -7,10 +7,16 @@ export interface Product {
     description: string;
 }
 
-export interface ProductsInteface {
+export interface ProductsInterface {
     products: Product[]
 }
 
 export interface ProductsQueryInterface {
     filter: string[]
+}
+
+export interface BundleProductsInterface {
+    id: number;
+    productids: number[];
+    products: Product[];
 }

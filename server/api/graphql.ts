@@ -23,6 +23,20 @@ const resolvers = {
                 ],
             })
             return result
+        },
+        bundle_products: async () => {
+            const bundles = await prisma.product_bundle.findMany({})
+                const result = bundles.map(item=> {
+                    const products = prisma.products.findMany({
+                        where: {
+                            id: {
+                                in: item.productids
+                            }
+                        }
+                    })
+                    return {...item, products}
+                })
+            return result
         }
     },
 /*    Mutation: {
