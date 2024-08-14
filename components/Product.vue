@@ -3,11 +3,14 @@ import moment from "moment";
 import type {Product} from "../types_interfaces/interfaces"
 import {ProductTypes} from "../lib/utils"
 import {useProductsStore} from "../stores/productsStore";
+import {useUserInfoStore} from "../stores/userStore";
 interface Props  {
   item: Product
 }
 const store = useProductsStore()
 const props = defineProps<Props>()
+const userInfoStore = useUserInfoStore()
+const { isAdmin } = storeToRefs(userInfoStore)
 const isFlight = ref<boolean>(props?.item?.type === ProductTypes.first || false)
 const isHotel = ref(props?.item?.type === ProductTypes.second)
 const isCar = ref(props?.item?.type === ProductTypes.third)
@@ -44,7 +47,7 @@ const onDeleteProduct = async () => {
     <p v-show="isFlight"><strong>Flight date:</strong> {{moment(item.date).format("MMM Do YY")}}</p>
     <p class="text-cyan-950"><strong>City:</strong> {{item.city}}</p>
     <p class="text-cyan-950">{{item.description}}</p>
-    <button class="absolute flex text-2xl font-bold	px-0 right-2 top-0 rounded-lg p-1"
+    <button v-show="isAdmin" class="absolute flex text-2xl font-bold	px-0 right-2 top-0 rounded-lg p-1"
       :class="{
         'text-fuchsia-800': isFlight,
         'text-orange-500': isCar,

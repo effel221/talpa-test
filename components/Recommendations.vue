@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import {useBundleProductsStore} from "../stores/bundleProductsStore";
+import {useUserInfoStore} from "../stores/userStore";
 
+const userInfoStore = useUserInfoStore()
+const { isAdmin } = storeToRefs(userInfoStore)
 const store = useBundleProductsStore()
 const { result } = storeToRefs(store)
 const onBundleDeleteProduct = async (id: number) => {
@@ -24,7 +27,7 @@ const onBundleDeleteProduct = async (id: number) => {
       <h3 class="m-2 font-bold">Recommended product bundle</h3>
       <Product v-for="product in item?.products" :key="product.id" :item="product" />
       <button>Order bundle</button>
-      <button class="absolute text-2xl font-bold	px-1 right-2 top-0 rounded-lg"
+      <button v-show="isAdmin" class="absolute text-2xl font-bold	px-1 right-2 top-0 rounded-lg"
         @click="onBundleDeleteProduct(item.id)"
       >x</button>
     </SplideSlide>
