@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import {useProductsStore} from "../stores/productsStore"
 import {useUserInfoStore} from "../stores/userStore";
+import {useCardStore} from "../stores/cardStore";
 const store = useProductsStore()
 const { result } = storeToRefs(store)
 const userInfoStore = useUserInfoStore()
 const { isAdmin } = storeToRefs(userInfoStore)
+const cardStore = useCardStore()
+const { productIndicator } = storeToRefs(cardStore)
+
 
 </script>
 
 <template>
+  {{productIndicator}}}
   <Recommendations/>
   <h2 class="m-4 text-3xl font-bold">Available products
     <button v-show="isAdmin"

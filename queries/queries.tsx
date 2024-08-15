@@ -41,6 +41,7 @@ export const getCardInfo = gql`
                     ...Product
                 }
             }
+            productCount
         }
     }
     ${fragmentProduct}

@@ -9,7 +9,7 @@ const { cardUser, cardAdmin, isAdminResult } = storeToRefs(store)
 <template>
 
    <h2 class="m-4 text-3xl font-bold">User's Orders</h2>
-   <div class="flex">
+   <div class="flex flex-wrap">
      <Product v-for="cardProduct in cardUser?.get_card[0]?.card_products"
               :key="cardProduct.product.id" :item="cardProduct.product" :isOderButtonVisible="false" />
    </div>

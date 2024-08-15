@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import {useUserInfoStore} from "../stores/userStore";
+import {useCardStore} from "../stores/cardStore";
 
 const store = useUserInfoStore()
 const { isAdmin } = storeToRefs(store)
-
+const cardStore = useCardStore()
+const {productCount} = storeToRefs(cardStore)
 </script>
 
 <template>
@@ -13,7 +15,7 @@ const { isAdmin } = storeToRefs(store)
        text-center me-2 mb-2 dark:bg-sky-600
        dark:hover:bg-sky-700 dark:focus:ring-blue-800"
              @click="store.setIsAdmin(true)"
-     >Go to Card</NuxtLink>
+     > {{productCount}}  Go to Card</NuxtLink>
      <button v-show="!isAdmin"
          class="text-white bg-teal-700 hover:bg-teal-800 focus:outline-none
       focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5

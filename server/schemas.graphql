@@ -37,6 +37,7 @@ type Card {
     id: ID
     user: String
     card_products: [CardProducts]
+    productCount: Int
 }
 
 input CardInput {

@@ -25,7 +25,8 @@ const resolvers = {
                     }
                 },
             })
-            return currentCard
+            const productCount = currentCard[0]?.card_products.length
+            return [{...currentCard[0], productCount}]
         },
         products: async (parent: undefined, args:ProductsQueryInterface) => {
             const result = await prisma.products.findMany({

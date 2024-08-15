@@ -26,6 +26,8 @@ const addToCard = async () => {
     }
   }
   await cardStore.mutate(variables)
+  await cardStore.refetchCardUser()
+  await cardStore.refetchCardAdmin()
 }
 
 const onDeleteProduct = async () => {
