@@ -31,4 +31,5 @@ export interface BundleProductsInterface {
 
 export interface ProductProps  {
     item: Product
+    isOderButtonVisible: boolean
 }

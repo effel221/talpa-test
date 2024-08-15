@@ -12,6 +12,7 @@ const { isAdmin } = storeToRefs(userInfoStore)
 const isFlight = ref<boolean>(props?.item?.type === ProductTypes.first || false)
 const isHotel = ref(props?.item?.type === ProductTypes.second)
 const isCar = ref(props?.item?.type === ProductTypes.third)
+const isOderButtonVisible = props.isOderButtonVisible
 
 const onDeleteProduct = async () => {
    const variables = {
@@ -24,7 +25,7 @@ const onDeleteProduct = async () => {
 </script>
 
 <template>
-  <div class="relative w-72 m-1 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+  <div class="relative w-72 m-1 px-6 pb-10 pt-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
     <span
       class="absolute	px-1 left-1 top-1 text-white rounded-lg text-sm"
       :class="{
@@ -45,8 +46,8 @@ const onDeleteProduct = async () => {
     <p v-show="isFlight"><strong>Flight date:</strong> {{moment(item.date).format("MMM Do YY")}}</p>
     <p class="text-cyan-950"><strong>City:</strong> {{item.city}}</p>
     <p class="text-cyan-950">{{item.description}}</p>
-    <button class="m-1 p-1 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none
-      focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm
+    <button v-show="isOderButtonVisible" class="absolute left-1 bottom-1 right-1 p-1.5 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none
+      focus:ring-4 focus:ring-blue-300 font-medium text-sm
       text-center dark:bg-blue-600
       dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     >Add to Card</button>

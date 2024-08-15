@@ -26,20 +26,26 @@ const resolvers = {
         },
         bundle_products: async () => {
             const bundles = await prisma.product_bundle.findMany({})
-                const result = bundles.map(item=> {
-                    const products = prisma.products.findMany({
-                        where: {
-                            id: {
-                                in: item.productids
-                            }
+            const result = bundles.map(item=> {
+                const products = prisma.products.findMany({
+                    where: {
+                        id: {
+                            in: item.productids
                         }
-                    })
-                    return {...item, products}
+                    }
                 })
+                return {...item, products}
+            })
             return result
         }
     },
     Mutation: {
+        create_product: async (parent, args) => {
+
+        },
+        create_bundle_product: async (parent, args) => {
+
+        },
         delete_product: async (parent: undefined, args: IdParamMutationInteface) => {
             const id = args.id
             const deleteProduct = await prisma.products.delete({

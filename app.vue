@@ -1,7 +1,7 @@
 
 
 <template>
-  <header class="mb-10 bg-orange-100">
+  <header class="bg-orange-100 fixed rigth-0 left-0 z-10 top-0 w-full">
     <div class="flex">
       <div class="text-green-500 text-2xl m-4 font-bold">
         <a href="/">Travel Paradise Site</a>
@@ -12,9 +12,9 @@
     </div>
 
   </header>
-  <main class="flex flex-col">
+  <main class="flex flex-col pt-28">
     <Recommendations/>
-    <h2 class="m-4 text-3xl font-bold">Availible
+    <h2 class="m-4 text-3xl font-bold">Availible products
       <button v-show="isAdmin"
               class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none
       focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-2.5 py-1.5
@@ -24,7 +24,7 @@
     </h2>
     <div class="flex m-5"><ProductFilter/></div>
     <div class="flex flex-wrap justify-center">
-        <Product v-for="item in result?.products" :key="item.id" :item="item" />
+        <Product v-for="item in result?.products" :key="item.id" :item="item" :isOderButtonVisible="true" />
     </div>
   </main>
 </template>

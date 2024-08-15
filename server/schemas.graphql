@@ -13,13 +13,28 @@ type Product {
     description: String
 }
 
+input ProductInput {
+    date: Date
+    city: String
+    name: String
+    type: String
+    description: String
+}
+
 type BundleProduct {
     id: ID!
     productids: [Int]
     products: [Product]
 }
 
+input BundleProductInput {
+    productids: [Int]
+    products: [ProductInput]
+}
+
 type Mutation {
+    create_product(product: ProductInput): Product!,
+    create_bundle_product(product: BundleProductInput): BundleProduct!,
     delete_product(id: ID!): Product!,
     delete_bundle_product(id: ID!): BundleProduct!,
 }
