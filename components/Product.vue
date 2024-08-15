@@ -46,10 +46,10 @@ const onDeleteProduct = async () => {
     <p v-show="isFlight"><strong>Flight date:</strong> {{moment(item.date).format("MMM Do YY")}}</p>
     <p class="text-cyan-950"><strong>City:</strong> {{item.city}}</p>
     <p class="text-cyan-950">{{item.description}}</p>
-    <button v-show="isOderButtonVisible" class="absolute left-1 bottom-1 right-1 p-1.5 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none
+    <button v-show="isOderButtonVisible" class="absolute left-1 bottom-1 right-1 p-1.5 text-white bg-teal-700 hover:bg-teal-800 focus:outline-none
       focus:ring-4 focus:ring-blue-300 font-medium text-sm
-      text-center dark:bg-blue-600
-      dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      text-center dark:bg-teal-600
+      dark:hover:bg-teal-700 dark:focus:ring-blue-800"
     >Add to Card</button>
     <button v-show="isAdmin" class="absolute flex text-2xl font-bold	px-0 right-2 top-0 rounded-lg p-1"
       :class="{

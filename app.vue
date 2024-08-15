@@ -3,7 +3,7 @@
 <template>
   <header class="bg-orange-100 fixed rigth-0 left-0 z-10 top-0 w-full">
     <div class="flex">
-      <div class="text-green-500 text-2xl m-4 font-bold">
+      <div class="text-teal-800 text-2xl m-4 font-bold">
         <a href="/">Travel Paradise Site</a>
       </div>
       <div class="ml-auto mt-4 mb-4 mr-4">
@@ -16,10 +16,10 @@
     <Recommendations/>
     <h2 class="m-4 text-3xl font-bold">Availible products
       <button v-show="isAdmin"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none
+              class="text-white bg-teal-700 hover:bg-teal-800 focus:outline-none
       focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-2.5 py-1.5
-      text-center me-2 mb-2 dark:bg-blue-600
-      dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      text-center me-2 mb-2 dark:bg-teal-600
+      dark:hover:bg-teal-700 dark:focus:ring-blue-800"
       >+</button>
     </h2>
     <div class="flex m-5"><ProductFilter/></div>
