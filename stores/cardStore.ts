@@ -1,12 +1,18 @@
 import {addToCard} from "../queries/mutations";
 import {getCardInfo} from "../queries/queries";
+import {useUserInfoStore} from "../stores/userStore";
 
 
 export const useCardStore = defineStore('cardInfo', () => {
-    const {result: card } = useQuery(getCardInfo, {
+    const store = useUserInfoStore()
+    const isAdminResult = computed(()=> store.isAdmin)
+    const {result: cardUser } = useQuery(getCardInfo, {
         filter: {user:"User"}
     })
+    const {result: cardAdmin } = useQuery(getCardInfo, {
+        filter: {user:"Admin"}
+    }, {enabled: isAdminResult})
     const {mutate} = useMutation(addToCard)
 
-    return {mutate, card}
+    return {mutate, cardUser, cardAdmin}
 })

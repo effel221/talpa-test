@@ -2,12 +2,17 @@
 import {useCardStore} from "../stores/cardStore";
 
 const store = useCardStore()
-const { card } = storeToRefs(store)
-console.log(card)
+const { cardUser, cardAdmin } = storeToRefs(store)
+console.log(cardUser, cardAdmin)
 </script>
 
 <template>
-gdgfdgf
+ <div v-show="cardUser">
+   User
+ </div>
+  <div  v-show="cardAdmin">
+     Admin
+   </div>
 </template>
 
 

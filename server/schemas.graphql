@@ -29,10 +29,14 @@ input BundleProductInput {
     products: [ProductInput]
 }
 
+type CardProducts {
+    product: Product
+}
+
 type Card {
     id: ID
     user: String
-    products: [Product]
+    card_products: [CardProducts]
 }
 
 input CardInput {

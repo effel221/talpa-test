@@ -36,8 +36,10 @@ export const getCardInfo = gql`
         get_card(filter: $filter) {
             id
             user
-            products {
-                ...Product
+            card_products {
+                product {
+                    ...Product
+                }
             }
         }
     }
