@@ -30,10 +30,9 @@ input BundleProductInput {
 }
 
 type Card {
-    id: ID!
+    id: ID
     user: String
     products: [Product]
-    product_bundle: [BundleProduct]
 }
 
 input CardInput {
@@ -48,7 +47,7 @@ input CardFilter {
 }
 
 type Query {
-    get_card(filter: CardFilter): Card
+    get_card(filter: CardFilter): [Card]
     products(filter: [String]): [Product],
     bundle_products: [BundleProduct]
 }

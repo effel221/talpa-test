@@ -11,12 +11,16 @@ const resolvers = {
     Query: {
         get_card: async (parent: undefined, args) => {
             const filterCondition = () => {
-                if (args.filter.id) return {id: args.filter.id}
-                if (args.filter.user) return {id: args.filter.user}
+                if (args.filter.id) return {id: Number(args.filter.id)}
+                if (args.filter.user) return {user: args.filter.user}
             }
+
             const currentCard = await prisma.card.findMany({
-                where: filterCondition()
+                include: {
+                    card_products: true,
+                },
             })
+            console.log(currentCard)
             return currentCard
         },
         products: async (parent: undefined, args:ProductsQueryInterface) => {
