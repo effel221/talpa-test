@@ -12,10 +12,10 @@
     </div>
   </header>
   <main class="flex flex-col pt-28">
-    <NuxtExample dir="routing/pages" :nav="nav" current-route>
+    <NuxtLayout dir="routing/pages" :nav="nav" current-route>
       <NuxtLoadingIndicator />
       <NuxtPage />
-    </NuxtExample>
+    </NuxtLayout>
   </main>
 </template>
 
