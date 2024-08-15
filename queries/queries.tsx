@@ -30,3 +30,16 @@ export const getBundleProducts = gql`
     }
     ${fragmentProduct}
 `
+
+export const getCardInfo = gql`
+    query getCardInfo($filter: CardFilter) {
+        get_card(filter: $filter) {
+            id
+            user
+            products {
+                ...Product
+            }
+        }
+    }
+    ${fragmentProduct}
+`

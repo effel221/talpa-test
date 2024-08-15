@@ -1,8 +1,4 @@
 scalar Date
-type Query {
-    products(filter: [String]): [Product],
-    bundle_products: [BundleProduct]
-}
 
 type Product {
     id: ID!
@@ -44,7 +40,17 @@ input CardInput {
     id: ID
     user: String
     products: [ProductInput]
-    product_bundle: [BundleProductInput]
+}
+
+input CardFilter {
+    id: Int
+    user: String
+}
+
+type Query {
+    get_card(filter: CardFilter): Card
+    products(filter: [String]): [Product],
+    bundle_products: [BundleProduct]
 }
 
 type Mutation {

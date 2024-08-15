@@ -9,6 +9,16 @@ import type {ProductsQueryInterface, IdParamMutationInteface} from "~/types_inte
 
 const resolvers = {
     Query: {
+        get_card: async (parent: undefined, args) => {
+            const filterCondition = () => {
+                if (args.filter.id) return {id: args.filter.id}
+                if (args.filter.user) return {id: args.filter.user}
+            }
+            const currentCard = await prisma.card.findMany({
+                where: filterCondition()
+            })
+            return currentCard
+        },
         products: async (parent: undefined, args:ProductsQueryInterface) => {
             const result = await prisma.products.findMany({
                     where: {
@@ -40,7 +50,7 @@ const resolvers = {
         }
     },
     Mutation: {
-        add_to_card: async (parent, args) => {
+        add_to_card: async (parent: undefined, args) => {
             const products = args.card.products
             const currentCard = await prisma.card.findMany({
                 where: {
@@ -74,10 +84,10 @@ const resolvers = {
                 return updateToCard
             }
         },
-        create_product: async (parent, args) => {
+        create_product: async (parent: undefined, args) => {
 
         },
-        create_bundle_product: async (parent, args) => {
+        create_bundle_product: async (parent: undefined, args) => {
 
         },
         delete_product: async (parent: undefined, args: IdParamMutationInteface) => {
