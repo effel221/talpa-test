@@ -1,5 +1,3 @@
-
-
 export const useUserInfoStore = defineStore('userInfo', () => {
     const isAdmin = ref(false)
     const getUser = () => (isAdmin.value ? "Admin" : "User")

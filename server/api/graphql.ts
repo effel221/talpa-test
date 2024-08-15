@@ -2,14 +2,12 @@ import { typeDefs } from '#graphql/schema'
 import { ApolloServer } from '@apollo/server'
 import { startServerAndCreateH3Handler } from "@as-integrations/h3"
 import prisma from "~/server/prisma";
-import type {ProductsQueryInterface, IdParamMutationInteface} from "~/types_interfaces/interfaces";
-
-
+import type {ProductsQueryType, IdParamMutationType, GetCardType, CardArgsType} from "~/types_interfaces/types";
 
 
 const resolvers = {
     Query: {
-        get_card: async (parent: undefined, args) => {
+        get_card: async (parent: undefined, args: GetCardType) => {
             const filterCondition = () => {
                 if (args.filter.id) return {id: Number(args.filter.id)}
                 if (args.filter.user) return {user: args.filter.user}
@@ -28,7 +26,7 @@ const resolvers = {
             const productCount = currentCard[0]?.card_products.length
             return [{...currentCard[0], productCount}]
         },
-        products: async (parent: undefined, args:ProductsQueryInterface) => {
+        products: async (parent: undefined, args:ProductsQueryType) => {
             const result = await prisma.products.findMany({
                     where: {
                         type: {
@@ -59,7 +57,7 @@ const resolvers = {
         }
     },
     Mutation: {
-        add_to_card: async (parent: undefined, args) => {
+        add_to_card: async (parent: undefined, args: CardArgsType) => {
             const products = args.card.products
             const currentCard = await prisma.card.findMany({
                 where: {
@@ -99,7 +97,7 @@ const resolvers = {
         create_bundle_product: async (parent: undefined, args) => {
 
         },
-        delete_product: async (parent: undefined, args: IdParamMutationInteface) => {
+        delete_product: async (parent: undefined, args: IdParamMutationType) => {
             const id = args.id
             const deleteProduct = await prisma.products.delete({
                 where: {
@@ -108,7 +106,7 @@ const resolvers = {
             })
             return deleteProduct
         },
-        delete_bundle_product: async (parent: undefined, args : IdParamMutationInteface) => {
+        delete_bundle_product: async (parent: undefined, args : IdParamMutationType) => {
             const id = args.id
             const deleteBundleProduct = await prisma.product_bundle.delete({
                 where: {

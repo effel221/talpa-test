@@ -5,6 +5,7 @@ export interface Product {
     name: string;
     type: string;
     description: string;
+    __typename: string
 }
 
 export interface BundleProduct {
@@ -17,17 +18,10 @@ export interface ProductsInterface {
     products: Product[]
 }
 
-export interface ProductsQueryInterface {
-    filter: string[]
-}
-
-export interface IdParamMutationInteface {
-    id: string
-}
-
 export interface BundleProductsInterface {
     bundle_products: BundleProduct[]
 }
+
 
 export interface ProductProps  {
     item: Product

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import moment from "moment";
-import type {ProductProps} from "../types_interfaces/interfaces"
+import type {Product, ProductProps} from "../types_interfaces/interfaces"
 import {ProductTypes} from "../lib/utils"
 import {useProductsStore} from "../stores/productsStore";
 import {useUserInfoStore} from "../stores/userStore"
@@ -16,9 +16,9 @@ const isHotel = ref(props?.item?.type === ProductTypes.second)
 const isCar = ref(props?.item?.type === ProductTypes.third)
 const isOderButtonVisible = props.isOderButtonVisible
 
-const addToCard = async () => {
+const addToCard = async (item: Product) => {
   const removedProp = '__typename'
-  const { [removedProp]: removedProperty, ...remainingObject } = props.item
+  const { [removedProp]: removedProperty, ...remainingObject } = item
   const variables = {
     card: {
       user: userInfoStore.getUser(),
@@ -68,7 +68,7 @@ const onDeleteProduct = async () => {
       focus:ring-4 focus:ring-blue-300 font-medium text-sm
       text-center dark:bg-teal-600
       dark:hover:bg-teal-700 dark:focus:ring-blue-800"
-      @click="addToCard"
+      @click="addToCard(item)"
     >Add to Card</button>
     <button v-show="isAdmin" class="absolute flex text-2xl font-bold	px-0 right-2 top-0 rounded-lg p-1"
       :class="{
