@@ -40,6 +40,40 @@ const resolvers = {
         }
     },
     Mutation: {
+        add_to_card: async (parent, args) => {
+            const products = args.card.products
+            const currentCard = await prisma.card.findMany({
+                where: {
+                    user: args.card.user
+                }
+            })
+            if (!currentCard.length) {
+                const addToCard = await prisma.card.create({
+                    data: {
+                        user: args.card.user,
+                        card_products: {
+                            create: products.map(({id})=>
+                                ({productId: Number(id)})),
+                        },
+                    },
+                })
+                return addToCard
+            } else {
+                const updateToCard = await prisma.card.update({
+                    where: {
+                      id: currentCard[0].id
+                    },
+                    data: {
+                        user: args.card.user,
+                        card_products: {
+                            create: products.map(({id})=>
+                                ({productId: Number(id)})),
+                        },
+                    },
+                })
+                return updateToCard
+            }
+        },
         create_product: async (parent, args) => {
 
         },

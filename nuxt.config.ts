@@ -4,7 +4,7 @@ const defineNuxtConfig = ({
     autoImports: true,
     clients: {
       default: {
-        httpEndpoint: 'http://localhost:3000/api/graphql',
+        httpEndpoint: 'http://localhost:3000/api/graphql'
       }
     },
   },

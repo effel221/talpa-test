@@ -4,15 +4,29 @@ import type {ProductProps} from "../types_interfaces/interfaces"
 import {ProductTypes} from "../lib/utils"
 import {useProductsStore} from "../stores/productsStore";
 import {useUserInfoStore} from "../stores/userStore"
+import {useCardStore} from "../stores/cardStore";
 
 const store = useProductsStore()
 const props = defineProps<ProductProps>()
 const userInfoStore = useUserInfoStore()
 const { isAdmin } = storeToRefs(userInfoStore)
+const cardStore = useCardStore()
 const isFlight = ref<boolean>(props?.item?.type === ProductTypes.first || false)
 const isHotel = ref(props?.item?.type === ProductTypes.second)
 const isCar = ref(props?.item?.type === ProductTypes.third)
 const isOderButtonVisible = props.isOderButtonVisible
+
+const addToCard = async () => {
+  const removedProp = '__typename'
+  const { [removedProp]: removedProperty, ...remainingObject } = props.item
+  const variables = {
+    card: {
+      user: userInfoStore.getUser(),
+      products: [remainingObject]
+    }
+  }
+  await cardStore.mutate(variables)
+}
 
 const onDeleteProduct = async () => {
    const variables = {
@@ -52,6 +66,7 @@ const onDeleteProduct = async () => {
       focus:ring-4 focus:ring-blue-300 font-medium text-sm
       text-center dark:bg-teal-600
       dark:hover:bg-teal-700 dark:focus:ring-blue-800"
+      @click="addToCard"
     >Add to Card</button>
     <button v-show="isAdmin" class="absolute flex text-2xl font-bold	px-0 right-2 top-0 rounded-lg p-1"
       :class="{
