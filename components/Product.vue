@@ -25,7 +25,9 @@ const onDeleteProduct = async () => {
 </script>
 
 <template>
-  <div class="relative w-72 m-1 px-6 pb-10 pt-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+  <div
+      class="relative w-72 m-1 px-6 pb-4 pt-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+     :class="{'pb-10': isOderButtonVisible}">
     <span
       class="absolute	px-1 left-1 top-1 text-white rounded-lg text-sm"
       :class="{

@@ -26,7 +26,7 @@ const onBundleDeleteProduct = async (id: number) => {
     >+</button>
   </h2>
   <Splide
-      :options="{ perPage: 5, perMove: 1, gap: '2px', padding: '10px', pagination: true }"
+      :options="{ perPage: 5, perMove: 1, gap: '2px', padding: '10px', pagination: true, type: 'loop' }"
       aria-labelledby="Our products bundle recommendations"
       class="relative mb-8 pb-8"
   >
