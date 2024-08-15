@@ -2,16 +2,23 @@
 import {useCardStore} from "../stores/cardStore";
 
 const store = useCardStore()
-const { cardUser, cardAdmin } = storeToRefs(store)
-console.log(cardUser, cardAdmin)
+const { cardUser, cardAdmin, isAdminResult } = storeToRefs(store)
+
 </script>
 
 <template>
- <div v-show="cardUser">
-   User
- </div>
-  <div  v-show="cardAdmin">
-     Admin
+
+   <h2 class="m-4 text-3xl font-bold">User's Orders</h2>
+   <div class="flex">
+     <Product v-for="cardProduct in cardUser?.get_card[0]?.card_products"
+              :key="cardProduct.product.id" :item="cardProduct.product" :isOderButtonVisible="false" />
+   </div>
+  <div v-show="isAdminResult">
+    <h2 class="m-4 text-3xl font-bold">Admin's Orders</h2>
+    <div class="flex">
+      <Product v-for="cardProduct in cardAdmin?.get_card[0]?.card_products"
+               :key="cardProduct.product.id" :item="cardProduct.product" :isOderButtonVisible="false" />
+    </div>
    </div>
 </template>
 

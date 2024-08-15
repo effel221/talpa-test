@@ -10,7 +10,7 @@ const { isAdmin } = storeToRefs(userInfoStore)
 
 <template>
   <Recommendations/>
-  <h2 class="m-4 text-3xl font-bold">Availible products
+  <h2 class="m-4 text-3xl font-bold">Available products
     <button v-show="isAdmin"
             class="text-white bg-teal-700 hover:bg-teal-800 focus:outline-none
     focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-2.5 py-1.5
