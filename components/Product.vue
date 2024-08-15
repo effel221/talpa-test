@@ -30,22 +30,22 @@ const onDeleteProduct = async () => {
       class="absolute	px-1 left-1 top-1 text-white rounded-lg text-sm"
       :class="{
         'bg-fuchsia-800': isFlight,
-        'bg-orange-500': isCar,
+        'bg-orange-700': isCar,
         'bg-sky-700': isHotel}"
     >
       <span v-show="isFlight">Flight</span>
       <span v-show="isHotel">Hotel</span>
       <span v-show="isCar">Car</span>
     </span>
-    <h5
-        class="mb-2 text-2xl font-bold tracking-tight"
+    <h3
+        class="mb-2 mt-2 text-2xl font-bold tracking-tight"
         :class="{
         'text-fuchsia-800': isFlight,
-        'text-orange-500': isCar,
-        'text-sky-700': isHotel}">{{item.name}}</h5>
+        'text-orange-600': isCar,
+        'text-sky-700': isHotel}">{{item.name}}</h3>
     <p v-show="isFlight"><strong>Flight date:</strong> {{moment(item.date).format("MMM Do YY")}}</p>
-    <p class="text-cyan-950"><strong>City:</strong> {{item.city}}</p>
-    <p class="text-cyan-950">{{item.description}}</p>
+    <p><strong>City:</strong> {{item.city}}</p>
+    <p>{{item.description}}</p>
     <button v-show="isOderButtonVisible" class="absolute left-1 bottom-1 right-1 p-1.5 text-white bg-teal-700 hover:bg-teal-800 focus:outline-none
       focus:ring-4 focus:ring-blue-300 font-medium text-sm
       text-center dark:bg-teal-600
