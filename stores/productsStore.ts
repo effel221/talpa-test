@@ -45,5 +45,5 @@ export const useProductsStore = defineStore('products', () => {
         await cardStore.refetchCardAdmin()
     }
 
-    return {visibleProductsTypes, currentPage, setVisibleProductsTypes, result, addToCard, onDeleteProduct}
+    return {visibleProductsTypes, currentPage, setVisibleProductsTypes, result, refetch, mutate, addToCard, onDeleteProduct}
 })
