@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {useProductsStore} from "../stores/productsStore"
 import {useUserInfoStore} from "../stores/userStore";
+import
 const store = useProductsStore()
 const { result } = storeToRefs(store)
 const userInfoStore = useUserInfoStore()
@@ -21,6 +22,8 @@ const { isAdmin } = storeToRefs(userInfoStore)
   <div class="flex flex-wrap justify-center">
     <Product v-for="item in result?.products" :key="item.id" :item="item" :isOderButtonVisible="true" />
   </div>
+  <Modal>
+  </Modal>
 </template>
 
 

@@ -17,7 +17,6 @@
       <NuxtPage />
     </NuxtLayout>
   </main>
-  <Modal> ak;ldkaldks</Modal>
 </template>
 
 
