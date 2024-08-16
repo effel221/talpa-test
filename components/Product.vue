@@ -36,6 +36,8 @@ const onDeleteProduct = async () => {
    }
    await store.mutate(variables)
    await store.refetch()
+  await cardStore.refetchCardUser()
+  await cardStore.refetchCardAdmin()
 }
 </script>
 

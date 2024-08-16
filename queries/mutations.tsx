@@ -5,10 +5,8 @@ export const addToCard = gql`
         add_to_card(card: $card) {
             id
             user
-            card_products {
-                product {
-                    ...Product   
-                }
+            products {
+                ...Product
             }
         }
     }

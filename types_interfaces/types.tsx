@@ -18,18 +18,14 @@ export type GetCardType = {
 export type CardType = {
     id: number
     user: string
-    card_products: {
-        product: Product[]
-    }
+    products: Product[]
     productCount: number
 }
 
 export type CardQuery = {
     get_card: {
         productCount: number
-        card_products: {
-            product: Product
-        }[]
+        products: Product[]
     }[]
 }
 

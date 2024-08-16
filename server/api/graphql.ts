@@ -16,14 +16,10 @@ const resolvers = {
             const currentCard = await prisma.card.findMany({
                 where: filterCondition(),
                 include: {
-                    card_products: {
-                        include: {
-                            product: true
-                        }
-                    }
+                    products: true
                 },
             })
-            const productCount = currentCard[0]?.card_products.length
+            const productCount = currentCard[0]?.products.length
             return [{...currentCard[0], productCount}]
         },
         products: async (parent: undefined, args:ProductsQueryType) => {
@@ -68,10 +64,10 @@ const resolvers = {
                 const addToCard = await prisma.card.create({
                     data: {
                         user: args.card.user,
-                        card_products: {
-                            create: products.map(({id})=>
-                                ({productId: Number(id)})),
-                        },
+                        products: {
+                            connect: products.map(({id})=>
+                                ({id: Number(id)}))
+                        }
                     },
                 })
                 return addToCard
@@ -82,10 +78,10 @@ const resolvers = {
                     },
                     data: {
                         user: args.card.user,
-                        card_products: {
-                            create: products.map(({id})=>
-                                ({productId: Number(id)})),
-                        },
+                        products: {
+                            connect: products.map(({id})=>
+                                ({id: Number(id)}))
+                        }
                     },
                 })
                 return updateToCard
@@ -98,8 +94,22 @@ const resolvers = {
 
         },
         delete_product: async (parent: undefined, args: IdParamMutationType) => {
-            const id = args.id
-            console.log(args.id)
+            const id = Number(args.id)
+            const currenProduct = await prisma.products.findMany({
+                where: {id: id}
+            })
+            if (currenProduct[0]?.cardId) {
+                const updateToCard = await prisma.card.update({
+                    where: {
+                        id: currenProduct[0].cardId
+                    },
+                    data: {
+                        products: {
+                            disconnect: [{id: id}]
+                        }
+                    },
+                })
+            }
             const deleteProduct = await prisma.products.delete({
                 where: {
                     id: Number(args.id),

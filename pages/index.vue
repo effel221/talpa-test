@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {useProductsStore} from "../stores/productsStore"
 import {useUserInfoStore} from "../stores/userStore";
-import {useCardStore} from "../stores/cardStore";
 const store = useProductsStore()
 const { result } = storeToRefs(store)
 const userInfoStore = useUserInfoStore()

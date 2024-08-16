@@ -14,13 +14,14 @@ datasource db {
 }
 
 model products {
-  id            Int             @id @default(autoincrement())
-  date          DateTime
-  city          String
-  name          String
-  type          String
-  description   String
-  card_products card_products[]
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  city        String
+  name        String
+  type        String
+  description String
+  card        card?    @relation(fields: [cardId], references: [id])
+  cardId      Int?
 }
 
 model product_bundle {
@@ -29,16 +30,7 @@ model product_bundle {
 }
 
 model card {
-  id            Int             @id @default(autoincrement())
-  user          String
-  card_products card_products[]
-}
-
-model card_products {
-  card      card     @relation(fields: [cardId], references: [id])
-  cardId    Int
-  product   products @relation(fields: [productId], references: [id])
-  productId Int
-
-  @@id([cardId, productId])
+  id       Int        @id @default(autoincrement())
+  user     String
+  products products[]
 }
