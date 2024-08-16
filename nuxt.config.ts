@@ -15,7 +15,8 @@ const defineNuxtConfig = ({
     "@nuxtjs/apollo",
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
-     "nuxt-splide"],
+     "nuxt-splide",
+    "@nuxt/test-utils/module"],
   build: {
     postcss: {
       plugins: {

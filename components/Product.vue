@@ -1,44 +1,17 @@
 <script setup lang="ts">
 import moment from "moment";
-import type {Product, ProductProps} from "../types_interfaces/interfaces"
+import type {ProductProps} from "../types_interfaces/interfaces"
 import {ProductTypes} from "../lib/utils"
 import {useProductsStore} from "../stores/productsStore";
-import {useUserInfoStore} from "../stores/userStore"
-import {useCardStore} from "../stores/cardStore";
-
-const store = useProductsStore()
-const props = defineProps<ProductProps>()
+import {useUserInfoStore} from "../stores/userStore";
 const userInfoStore = useUserInfoStore()
 const { isAdmin } = storeToRefs(userInfoStore)
-const cardStore = useCardStore()
+const store = useProductsStore()
+const props = defineProps<ProductProps>()
 const isFlight = ref<boolean>(props?.item?.type === ProductTypes.first || false)
 const isHotel = ref(props?.item?.type === ProductTypes.second)
 const isCar = ref(props?.item?.type === ProductTypes.third)
 const isOderButtonVisible = props.isOderButtonVisible
-
-const addToCard = async (item: Product) => {
-  const removedProp = '__typename'
-  const { [removedProp]: removedProperty, ...remainingObject } = item
-  const variables = {
-    card: {
-      user: userInfoStore.getUser(),
-      products: [remainingObject]
-    }
-  }
-  await cardStore.mutate(variables)
-  await cardStore.refetchCardUser()
-  await cardStore.refetchCardAdmin()
-}
-
-const onDeleteProduct = async () => {
-   const variables = {
-     id: props.item.id
-   }
-   await store.mutate(variables)
-   await store.refetch()
-  await cardStore.refetchCardUser()
-  await cardStore.refetchCardAdmin()
-}
 </script>
 
 <template>
@@ -69,14 +42,14 @@ const onDeleteProduct = async () => {
       focus:ring-4 focus:ring-blue-300 font-medium text-sm
       text-center dark:bg-teal-600
       dark:hover:bg-teal-700 dark:focus:ring-blue-800"
-      @click="addToCard(item)"
+      @click="store.addToCard(item)"
     >Add to Card</button>
     <button v-show="isAdmin" class="absolute flex text-2xl font-bold	px-0 right-2 top-0 rounded-lg p-1"
       :class="{
         'text-fuchsia-800': isFlight,
         'text-orange-500': isCar,
         'text-sky-700': isHotel}"
-      @click="onDeleteProduct"
+      @click="store.onDeleteProduct(item)"
     >x</button>
   </div>
 </template>
