@@ -1,8 +1,7 @@
-import type {ProductsInterface} from "../types_interfaces/interfaces";
+import type {ProductsInterface, Product} from "../types_interfaces/interfaces";
 import {getProducts} from "../queries/queries";
 import {ProductTypes} from "../lib/utils";
 import {deleteProduct} from "../queries/mutations";
-import {Product} from "../types_interfaces/interfaces";
 import {useUserInfoStore} from "../stores/userStore";
 import {useCardStore} from "../stores/cardStore";
 

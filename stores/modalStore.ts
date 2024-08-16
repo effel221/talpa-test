@@ -5,7 +5,7 @@ import type {BundleProduct} from "../types_interfaces/interfaces";
 
 export const useModalStore = defineStore('modal', () => {
     const isModalVisible = ref(false)
-    const setModalState = (val) => {
+    const setModalState = (val: boolean) => {
         isModalVisible.value = val
     }
     const onToggle = () => {

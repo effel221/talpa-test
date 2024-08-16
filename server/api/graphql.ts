@@ -87,10 +87,10 @@ const resolvers = {
                 return updateToCard
             }
         },
-        create_product: async (parent: undefined, args) => {
+        create_product: async () => {
 
         },
-        create_bundle_product: async (parent: undefined, args) => {
+        create_bundle_product: async () => {
 
         },
         delete_product: async (parent: undefined, args: IdParamMutationType) => {
