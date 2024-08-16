@@ -99,6 +99,7 @@ const resolvers = {
         },
         delete_product: async (parent: undefined, args: IdParamMutationType) => {
             const id = args.id
+            console.log(args.id)
             const deleteProduct = await prisma.products.delete({
                 where: {
                     id: Number(args.id),

@@ -15,7 +15,7 @@ export const useCardStore = defineStore('cardInfo', () => {
         filter: {user:"Admin"}
     })
     watchEffect(async () => {
-       const currentCount: number = store.isAdmin ? cardAdmin?.value?.get_card[0]?.productCount || 0 :
+       const currentCount = store.isAdmin ? cardAdmin?.value?.get_card[0]?.productCount || 0 :
            cardUser?.value?.get_card[0]?.productCount || 0
        productCount.value = currentCount
     })

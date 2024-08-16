@@ -37,7 +37,6 @@ const onDeleteProduct = async () => {
    await store.mutate(variables)
    await store.refetch()
 }
-
 </script>
 
 <template>
