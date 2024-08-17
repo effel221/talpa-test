@@ -2,6 +2,9 @@
   "name": "nuxt-app",
   "private": true,
   "type": "module",
+  "resolutions": {
+    "string-width": "4.2.3"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -19,6 +22,7 @@
     "@apollo/server": "^4.11.0",
     "@as-integrations/h3": "^1.2.1",
     "@pinia/nuxt": "^0.5.3",
+    "@testing-library/vue": "^8.1.0",
     "graphql": "^16.9.0",
     "moment": "^2.30.1",
     "nuxt": "^3.12.4",
