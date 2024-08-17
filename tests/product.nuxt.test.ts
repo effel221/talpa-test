@@ -1,21 +1,20 @@
 // @vitest-environment nuxt
-import * as VueQuery from '@vue/apollo-composable'
-import { it, expect, vi } from 'vitest'
+import { it, expect } from 'vitest'
 import { Product } from '#components'
-import {mountSuspended} from "@nuxt/test-utils/runtime"
+import {mountSuspended, mockNuxtImport} from "@nuxt/test-utils/runtime"
+import {productMock} from "../tests/bundleProductsStore.nuxt.test";
 
-
-vi.mock('@vue/apollo-composable');
+mockNuxtImport('useQuery', () => {
+    return () => {
+        return { value: 'mocked storage' }
+    }
+})
 
 it('can mount Product component', async () => {
-    const result =  [{
-        "mock": true
-    }]
-    VueQuery.useQuery = vi.fn().mockReturnValue({ result })
-    VueQuery.useMutation = vi.fn().mockReturnValue({ result })
-    const component = await mountSuspended(Product,{props: {item: {
-                name: 'Name',
-                isOderButtonVisible: true
-            }},shallow: true})
-    expect(component.html()).toContain('<h3 class="mb-2 mt-2 text-2xl font-bold tracking-tight">Name</h3>')
+    const component = await mountSuspended(Product, {
+        props: {
+            item: {...productMock}, isOrderButtonVisible: true
+        }, shallow: true
+    })
+    expect(component.text()).toContain('FlightHotelCarNameFlight date: Aug 17th 24City: MinsktextAdd to Cardx')
 })

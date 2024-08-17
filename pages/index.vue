@@ -19,7 +19,7 @@ const { isAdmin } = storeToRefs(userInfoStore)
   </h2>
   <div class="flex m-5"><ProductFilter/></div>
   <div class="flex flex-wrap justify-center">
-    <Product v-for="item in result?.products" :key="item.id" :item="item" :isOderButtonVisible="true" />
+    <Product v-for="item in result?.products" :key="item.id" :item="item" :isOrderButtonVisible="true" />
   </div>
 </template>
 

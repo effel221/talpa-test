@@ -43,7 +43,7 @@ const onBundleDeleteProduct = async (id: number) => {
     >
       <SplideSlide v-for="item in result?.bundle_products" :key="item.id" class="bg-slate-200 border border-gray-200 rounded-lg">
         <h3 class="m-2 font-bold">Recommended product bundle</h3>
-        <Product v-for="product in item?.products" :key="product.id" :item="product" :isOderButtonVisible="false"/>
+        <Product v-for="product in item?.products" :key="product.id" :item="product" :isOrderButtonVisible="false"/>
         <button class="w-full mt-1.5 mb-1.5 ml-auto p-1.5 text-white bg-teal-700 hover:bg-teal-800 focus:outline-none
       focus:ring-4 focus:ring-blue-300 font-medium text-sm
       text-center dark:bg-teal-600

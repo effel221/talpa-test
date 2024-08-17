@@ -10,7 +10,6 @@ export const useBundleProductsStore = defineStore('bundleProducts', () => {
     const {mutate} = useMutation<BundleProduct>(deleteBundleProduct)
 
     const addBundleToCard = (item: BundleProduct) => {
-        console.log(item)
         item.products.forEach(async (product)=>{
             await productStore.addToCard(product)
         })
